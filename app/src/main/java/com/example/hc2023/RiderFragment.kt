@@ -1,7 +1,6 @@
 package com.example.hc2023
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +8,6 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -32,6 +26,10 @@ class RiderFragment : Fragment() {
         RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
         RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
         )
+
+    // TEST-ONLY
+    //TODO: integrate w/ backend
+    private var networkTestData = listOf<PostModel>()
 
     private var filteredDataSet = listOf<RideModel>()
 
@@ -52,6 +50,19 @@ class RiderFragment : Fragment() {
 
         // Set up search view actions
         searchView = rootView.findViewById(R.id.search_view)
+
+        // Show all rides on search 'Quit'
+        searchView.setOnQueryTextFocusChangeListener { _, _ ->
+            val query = searchView.query
+            if (query == null || query.trim().toString() == "") {
+                // Reset search
+                //TODO: integrate w/ backend
+//                rideAdapter.dataSet = dummyData
+//                rideAdapter.notifyDataSetChanged()
+            }
+        }
+
+        // Search querying
         searchView.setOnQueryTextListener( object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null && query.trim() != "") {
@@ -61,11 +72,13 @@ class RiderFragment : Fragment() {
                     }
                 } else {
                     // Reset search
-                    rideAdapter.dataSet = dummyData
+                    //TODO: integrate w/ backend
+//                    rideAdapter.dataSet = dummyData
                 }
 
-                rideAdapter.dataSet = filteredDataSet
-                rideAdapter.notifyDataSetChanged()
+                //TODO: integrate w/ backend
+//                rideAdapter.dataSet = filteredDataSet
+//                rideAdapter.notifyDataSetChanged()
 
                 return false
             }
@@ -76,10 +89,20 @@ class RiderFragment : Fragment() {
             }
         })
 
+        activity?.let {
+            getPosts(it) { posts ->
+                //TODO: integrate w/ backend
+                networkTestData = posts
+                rideAdapter.dataSet = networkTestData
+                rideAdapter.notifyDataSetChanged()
+            }
+        }
+
         val recyclerView: RecyclerView = rootView.findViewById(R.id.rides_list)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        rideAdapter = RideAdapter(dummyData)
+        //TODO: integrate w/ backend
+        rideAdapter = RideAdapter(networkTestData)
         recyclerView.adapter = rideAdapter
 
         return rootView

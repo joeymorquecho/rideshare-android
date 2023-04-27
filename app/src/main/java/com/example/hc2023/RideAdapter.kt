@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RideAdapter(var dataSet: List<RideModel>) :
+class RideAdapter(
+    //TODO: integrate w/ backend
+    var dataSet: List<PostModel>) :
     RecyclerView.Adapter<RideAdapter.ViewHolder>() {
 
     /**
@@ -29,11 +31,10 @@ class RideAdapter(var dataSet: List<RideModel>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.destinationTV.text = dataSet[position].destination
-        viewHolder.dateTimeTV.text = dataSet[position].time
-        viewHolder.priceTV.text = dataSet[position].price
+        //TODO: integrate w/ backend
+        viewHolder.destinationTV.text = dataSet[position].title
+        viewHolder.dateTimeTV.text = dataSet[position].body
+        viewHolder.priceTV.text = dataSet[position].hashedPoster
     }
 
     // Return the size of your dataset (invoked by the layout manager)
