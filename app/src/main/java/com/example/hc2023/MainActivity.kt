@@ -2,6 +2,7 @@ package com.example.hc2023
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     // Fragments
     private lateinit var riderFragment: RiderFragment
     private lateinit var driverFragment: DriverFragment
+    private lateinit var profileFragment: ProfileFragment
 
     // Views
     private lateinit var bnv: BottomNavigationView
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         riderFragment = RiderFragment.newInstance()
         driverFragment = DriverFragment.newInstance()
+        profileFragment = ProfileFragment.newInstance()
         bnv = findViewById(R.id.bottom_nav_view)
 
         // Set up Navigation
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                     transaction.replace(R.id.fragment_holder, driverFragment).commit()
                 }
                 R.id.profile_item -> {
-                    transaction.commit()
+                    transaction.replace(R.id.fragment_holder, profileFragment).commit()
                 }
             }
             true
