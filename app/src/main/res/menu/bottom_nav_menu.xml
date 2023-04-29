@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/home_item"
+        android:id="@+id/rider_item"
         android:enabled="true"
         android:title="Rider"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/favorites_item"
+        android:id="@+id/driver_item"
         android:enabled="true"
         android:title="Driver"
         app:showAsAction="ifRoom" />

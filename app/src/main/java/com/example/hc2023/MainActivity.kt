@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     // Fragments
     private lateinit var riderFragment: RiderFragment
+    private lateinit var driverFragment: DriverFragment
 
     // Views
     private lateinit var bnv: BottomNavigationView
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         riderFragment = RiderFragment.newInstance()
+        driverFragment = DriverFragment.newInstance()
         bnv = findViewById(R.id.bottom_nav_view)
 
         // Set up Navigation
@@ -24,11 +26,11 @@ class MainActivity : AppCompatActivity() {
             val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
             when (it.itemId) {
-                R.id.home_item -> {
+                R.id.rider_item -> {
                     transaction.replace(R.id.fragment_holder, riderFragment).commit()
                 }
-                R.id.favorites_item -> {
-                    transaction.commit()
+                R.id.driver_item -> {
+                    transaction.replace(R.id.fragment_holder, driverFragment).commit()
                 }
                 R.id.profile_item -> {
                     transaction.commit()

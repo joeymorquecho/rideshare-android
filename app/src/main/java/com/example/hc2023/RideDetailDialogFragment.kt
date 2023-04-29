@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class RideDetailDialogFragment : DialogFragment() {
@@ -19,7 +20,7 @@ class RideDetailDialogFragment : DialogFragment() {
     ): View {
         val rootView: View = inflater.inflate(R.layout.fragment_ride_detail, container, false)
 
-        val exitBtn: Button = rootView.findViewById(R.id.exit_btn)
+        val exitBtn: FloatingActionButton = rootView.findViewById(R.id.exit_btn)
         exitBtn.setOnClickListener {
             dismiss()
         }
