@@ -102,7 +102,11 @@ class RiderFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         //TODO: integrate w/ backend
-        rideAdapter = RideAdapter(networkTestData)
+        rideAdapter = RideAdapter(networkTestData) { idx ->
+            val post = rideAdapter.dataSet[idx]
+            val dialogFragment = RideDetailDialogFragment()
+            activity?.supportFragmentManager?.let { dialogFragment.show(it, "customTag") }
+        }
         recyclerView.adapter = rideAdapter
 
         return rootView

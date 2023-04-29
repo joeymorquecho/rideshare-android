@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RideAdapter(
     //TODO: integrate w/ backend
-    var dataSet: List<PostModel>) :
+    var dataSet: List<PostModel>, private val onItemClick: (Int) -> Unit) :
     RecyclerView.Adapter<RideAdapter.ViewHolder>() {
 
     /**
@@ -35,6 +35,10 @@ class RideAdapter(
         viewHolder.destinationTV.text = dataSet[position].title
         viewHolder.dateTimeTV.text = dataSet[position].body
         viewHolder.priceTV.text = dataSet[position].hashedPoster
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClick(position)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
