@@ -16,9 +16,12 @@ class RideAdapter(
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val destinationTV: TextView = view.findViewById(R.id.destination_tv)
-        val dateTimeTV: TextView = view.findViewById(R.id.date_time_tv)
+        val usernameTV: TextView = view.findViewById(R.id.username_tv)
+        val postedTimeTV: TextView = view.findViewById(R.id.posted_time_tv)
         val priceTV: TextView = view.findViewById(R.id.price_tv)
+        val startTV: TextView = view.findViewById(R.id.start_location_tv)
+        val destinationTV: TextView = view.findViewById(R.id.destination_tv)
+        val descriptionTV: TextView = view.findViewById(R.id.description_tv)
     }
 
     // Create new views (invoked by the layout manager)
@@ -32,9 +35,9 @@ class RideAdapter(
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         //TODO: integrate w/ backend
-        viewHolder.destinationTV.text = dataSet[position].title
-        viewHolder.dateTimeTV.text = dataSet[position].body
-        viewHolder.priceTV.text = dataSet[position].hashedPoster
+//        viewHolder.destinationTV.text = dataSet[position].title
+//        viewHolder.dateTimeTV.text = dataSet[position].body
+//        viewHolder.priceTV.text = dataSet[position].hashedPoster
 
         viewHolder.itemView.setOnClickListener {
             onItemClick(position)

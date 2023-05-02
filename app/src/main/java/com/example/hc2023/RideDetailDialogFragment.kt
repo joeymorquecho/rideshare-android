@@ -34,8 +34,8 @@ class RideDetailDialogFragment : DialogFragment() {
         val window = dialog!!.window ?: return
         val params = window.attributes
 
-        val widthPercent = 80.toFloat() / 100
-        val heightPercent = 50.toFloat() / 100
+        val widthPercent = 95.toFloat() / 100
+        val heightPercent = 60.toFloat() / 100
         val dm = Resources.getSystem().displayMetrics
         val rect = dm.run { Rect(0, 0, widthPixels, heightPixels) }
         val percentWidth = rect.width() * widthPercent
