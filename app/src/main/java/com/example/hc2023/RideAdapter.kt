@@ -21,7 +21,6 @@ class RideAdapter(
         val priceTV: TextView = view.findViewById(R.id.price_tv)
         val startTV: TextView = view.findViewById(R.id.start_location_tv)
         val destinationTV: TextView = view.findViewById(R.id.destination_tv)
-        val descriptionTV: TextView = view.findViewById(R.id.description_tv)
     }
 
     // Create new views (invoked by the layout manager)
