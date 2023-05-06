@@ -105,7 +105,7 @@ class RiderFragment : Fragment() {
         rideAdapter = RideAdapter(networkTestData) { idx ->
             val post = rideAdapter.dataSet[idx]
             val dialogFragment = RideDetailDialogFragment()
-            activity?.supportFragmentManager?.let { dialogFragment.show(it, "customTag") }
+            activity?.supportFragmentManager?.let { dialogFragment.show(it, RIDE_DIALOG_FRAGMENT_TAG) }
         }
         recyclerView.adapter = rideAdapter
 
@@ -114,5 +114,7 @@ class RiderFragment : Fragment() {
 
     companion object {
         fun newInstance() = RiderFragment()
+
+        const val RIDE_DIALOG_FRAGMENT_TAG = "RIDE_DIALOG_FRAGMENT_TAG"
     }
 }

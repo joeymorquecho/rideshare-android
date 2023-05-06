@@ -134,7 +134,6 @@
         />
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exit_btn"
         android:layout_width="wrap_content"

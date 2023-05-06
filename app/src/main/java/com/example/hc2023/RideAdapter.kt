@@ -11,10 +11,6 @@ class RideAdapter(
     var dataSet: List<PostModel>, private val onItemClick: (Int) -> Unit) :
     RecyclerView.Adapter<RideAdapter.ViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val usernameTV: TextView = view.findViewById(R.id.username_tv)
         val postedTimeTV: TextView = view.findViewById(R.id.posted_time_tv)
