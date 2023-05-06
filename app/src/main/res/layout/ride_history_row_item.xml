@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?backgroundColor">
 
         <TextView
             android:id="@+id/username_tv"
@@ -20,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:text="Username"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="xx Street Street, State Zip Code ->"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:textSize="10sp"
             app:layout_constraintTop_toBottomOf="@id/date_tv"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="xx Street Street, State Zip Code"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:textSize="14sp"
             android:background="@drawable/rounded_corner"
             app:layout_constraintTop_toBottomOf="@id/start_location_tv"
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Completed"
-            android:textColor="@color/black"
+            android:textColor="?colorPrimary"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/destination_tv"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,10 +88,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3 Riders"
-            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textColor="#8B9EB0"
             app:layout_constraintTop_toTopOf="@+id/ride_status_tv"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="12dp"
+            android:layout_marginTop="4dp"
             />
 
         <TextView
@@ -98,6 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$XX.XX"
+            android:textColor="?textFillColor"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/rider_count_tv"
             app:layout_constraintBottom_toBottomOf="@+id/ride_status_tv"
             app:layout_constraintEnd_toEndOf="parent"

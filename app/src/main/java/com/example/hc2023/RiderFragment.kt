@@ -16,18 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class RiderFragment : Fragment() {
 
-    private val dummyData = listOf<RideModel>(
-//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
-        )
-
-    // TEST-ONLY
     private var networkDataSet = listOf<RideModel>()
 
     private var filteredDataSet = listOf<RideModel>()
@@ -56,8 +44,8 @@ class RiderFragment : Fragment() {
             if (query == null || query.trim().toString() == "") {
                 // Reset search
                 //TODO: integrate w/ backend
-//                rideAdapter.dataSet = dummyData
-//                rideAdapter.notifyDataSetChanged()
+                rideAdapter.dataSet = networkDataSet
+                rideAdapter.notifyDataSetChanged()
             }
         }
 
@@ -66,18 +54,18 @@ class RiderFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null && query.trim() != "") {
                     // Start search
-                    filteredDataSet = dummyData.filter {
+                    filteredDataSet = networkDataSet.filter {
                         it.destination.contains(query, ignoreCase = true)
                     }
                 } else {
                     // Reset search
                     //TODO: integrate w/ backend
-//                    rideAdapter.dataSet = dummyData
+                    rideAdapter.dataSet = networkDataSet
                 }
 
                 //TODO: integrate w/ backend
-//                rideAdapter.dataSet = filteredDataSet
-//                rideAdapter.notifyDataSetChanged()
+                rideAdapter.dataSet = filteredDataSet
+                rideAdapter.notifyDataSetChanged()
 
                 return false
             }

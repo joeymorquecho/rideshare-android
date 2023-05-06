@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 /**
@@ -44,10 +48,19 @@ class DriverFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView: View = inflater.inflate(R.layout.fragment_driver, container, false)
 
+        val newRideCollapseView : View = rootView.findViewById(R.id.new_ride_collapse_view)
+
+//        val startLocationEdit : EditText = rootView.findViewById(R.id.start_location_edit)
+//        val destinationEdit : EditText = rootView.findViewById(R.id.destination_edit)
+//        val departureBtn: Button = rootView.findViewById(R.id.departure_btn)
+//        val arrivalBtn: Button = rootView.findViewById(R.id.arrival_btn)
+//        val fareEdit: Button = rootView.findViewById(R.id.fare_edit)
+//        val contactEd: Button = rootView.findViewById(R.id.fare_edit)
+
+
         // Network request to get rides
         activity?.let {
             getPastRides(it) { rides ->
-                //TODO: integrate w/ backend
                 networkDataSet = rides
                 driverRideAdapter.dataSet = networkDataSet
                 driverRideAdapter.notifyDataSetChanged()
@@ -60,6 +73,16 @@ class DriverFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         driverRideAdapter = DriverRideAdapter(networkDataSet)
         recyclerView.adapter = driverRideAdapter
+
+        // Setup toggle new ride button
+        val newRideToggleBtn : FloatingActionButton = rootView.findViewById(R.id.toggle_new_ride_btn)
+        newRideToggleBtn.setOnClickListener {
+            if (newRideCollapseView.visibility == View.GONE) {
+                newRideCollapseView.visibility = View.VISIBLE
+            } else {
+                newRideCollapseView.visibility = View.GONE
+            }
+        }
 
         return rootView
     }

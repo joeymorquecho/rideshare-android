@@ -12,7 +12,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?backgroundColor"
+        >
 
         <TextView
             android:id="@+id/username_tv"
@@ -20,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:text="Username"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,22 +31,12 @@
             />
 
         <TextView
-            android:id="@+id/posted_time_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:text="10 hr"
-            app:layout_constraintTop_toBottomOf="@id/username_tv"
-            app:layout_constraintStart_toStartOf="@id/username_tv"
-            android:paddingBottom="8dp"
-            />
-
-        <TextView
             android:id="@+id/availability_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10sp"
             android:text="Available"
+            android:textColor="?colorPrimary"
             app:layout_constraintTop_toTopOf="@id/username_tv"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="12dp"
@@ -55,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$XX.XX"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/availability_tv"
             app:layout_constraintEnd_toEndOf="@id/availability_tv"
@@ -66,10 +58,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="xx Street Street, State Zip Code ->"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:textSize="10sp"
-            app:layout_constraintTop_toBottomOf="@id/posted_time_tv"
+            app:layout_constraintTop_toBottomOf="@id/username_tv"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             />
 
@@ -78,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="xx Street Street, State Zip Code"
-            android:textColor="@color/black"
+            android:textColor="?textFillColor"
             android:textSize="14sp"
             android:background="@drawable/rounded_corner"
             app:layout_constraintTop_toBottomOf="@id/start_location_tv"
@@ -94,28 +87,14 @@
             android:id="@+id/leaving_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Leaving: XX:XX - XX: XX"
+            android:text="Leaving: XX:XX"
             android:textSize="14sp"
-            android:textColor="@color/black"
+            android:textColor="#8B9EB0"
             app:layout_constraintTop_toBottomOf="@id/destination_tv"
             app:layout_constraintStart_toStartOf="@id/start_location_tv"
             android:layout_marginVertical="6dp"
             android:paddingBottom="12dp"
             />
-
-        <TextView
-            android:id="@+id/arriving_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Arriving: XX:XX - XX: XX"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="@id/leaving_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="12dp"
-            android:paddingBottom="12dp"
-            />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

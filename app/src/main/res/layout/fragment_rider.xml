@@ -14,7 +14,7 @@
             android:id="@+id/search_header_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Need a ride, NAME?"
+            android:text="Need a ride, Joey?"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/black"
