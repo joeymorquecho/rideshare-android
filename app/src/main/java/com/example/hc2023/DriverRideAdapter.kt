@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class DriverRideAdapter(
     //TODO: integrate w/ backend
-    var dataSet: List<PostModel>) :
+    var dataSet: List<RideModel>) :
     RecyclerView.Adapter<DriverRideAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -17,6 +17,7 @@ class DriverRideAdapter(
         val startTV: TextView = view.findViewById(R.id.start_location_tv)
         val destinationTV: TextView = view.findViewById(R.id.destination_tv)
         val priceTV: TextView = view.findViewById(R.id.price_tv)
+        val riderCountTV: TextView = view.findViewById(R.id.rider_count_tv)
     }
 
 
@@ -26,8 +27,19 @@ class DriverRideAdapter(
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // skip for now
+        viewHolder.usernameTV.text = dataSet[position].driver.name
+        viewHolder.priceTV.text = dataSet[position].payment
+        viewHolder.destinationTV.text = dataSet[position].destination
+
+        val ridersCount = dataSet[position].passengers.count()
+        if (ridersCount == 1) {
+            viewHolder.riderCountTV.text = ridersCount.toString() + " rider"
+        } else {
+            viewHolder.riderCountTV.text = ridersCount.toString() + " riders"
+        }
+
     }
 
     override fun getItemCount(): Int {

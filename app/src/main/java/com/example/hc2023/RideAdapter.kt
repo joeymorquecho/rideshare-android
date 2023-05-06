@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RideAdapter(
     //TODO: integrate w/ backend
-    var dataSet: List<PostModel>, private val onItemClick: (Int) -> Unit) :
+    var dataSet: List<RideModel>, private val onItemClick: (Int) -> Unit) :
     RecyclerView.Adapter<RideAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val usernameTV: TextView = view.findViewById(R.id.username_tv)
         val postedTimeTV: TextView = view.findViewById(R.id.posted_time_tv)
+        val leavingTimeTV: TextView = view.findViewById(R.id.leaving_tv)
         val priceTV: TextView = view.findViewById(R.id.price_tv)
         val startTV: TextView = view.findViewById(R.id.start_location_tv)
         val destinationTV: TextView = view.findViewById(R.id.destination_tv)
@@ -30,9 +31,10 @@ class RideAdapter(
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         //TODO: integrate w/ backend
-//        viewHolder.destinationTV.text = dataSet[position].title
-//        viewHolder.dateTimeTV.text = dataSet[position].body
-//        viewHolder.priceTV.text = dataSet[position].hashedPoster
+        viewHolder.usernameTV.text = dataSet[position].driver.name
+        viewHolder.priceTV.text = dataSet[position].payment
+        viewHolder.destinationTV.text = dataSet[position].destination
+        viewHolder.leavingTimeTV.text = "Leaving: " + dataSet[position].time
 
         viewHolder.itemView.setOnClickListener {
             onItemClick(position)

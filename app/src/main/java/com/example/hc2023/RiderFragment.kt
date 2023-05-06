@@ -17,19 +17,18 @@ import androidx.recyclerview.widget.RecyclerView
 class RiderFragment : Fragment() {
 
     private val dummyData = listOf<RideModel>(
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
         )
 
     // TEST-ONLY
-    //TODO: integrate w/ backend
-    private var networkTestData = listOf<PostModel>()
+    private var networkDataSet = listOf<RideModel>()
 
     private var filteredDataSet = listOf<RideModel>()
 
@@ -90,10 +89,9 @@ class RiderFragment : Fragment() {
         })
 
         activity?.let {
-            getPosts(it) { posts ->
-                //TODO: integrate w/ backend
-                networkTestData = posts
-                rideAdapter.dataSet = networkTestData
+            getAllRides(it) { rides ->
+                networkDataSet = rides
+                rideAdapter.dataSet = networkDataSet
                 rideAdapter.notifyDataSetChanged()
             }
         }
@@ -101,10 +99,9 @@ class RiderFragment : Fragment() {
         val recyclerView: RecyclerView = rootView.findViewById(R.id.rides_list)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        //TODO: integrate w/ backend
-        rideAdapter = RideAdapter(networkTestData) { idx ->
-            val post = rideAdapter.dataSet[idx]
-            val dialogFragment = RideDetailDialogFragment()
+        rideAdapter = RideAdapter(networkDataSet) { idx ->
+            val ride = rideAdapter.dataSet[idx]
+            val dialogFragment = RideDetailDialogFragment(ride)
             activity?.supportFragmentManager?.let { dialogFragment.show(it, RIDE_DIALOG_FRAGMENT_TAG) }
         }
         recyclerView.adapter = rideAdapter

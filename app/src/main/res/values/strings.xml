@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">hc2023</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="get_posts_url">http://143.198.115.54:8080/posts/</string>
+    <string name="get_all_rides_url">http://34.150.238.78/api/rides/</string>
+    <string name="get_past_rides_url">http://34.150.238.78/api/users/1/</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

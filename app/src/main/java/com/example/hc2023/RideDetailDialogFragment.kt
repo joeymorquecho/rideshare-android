@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class RideDetailDialogFragment : DialogFragment() {
+class RideDetailDialogFragment(val ride: RideModel) : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +25,20 @@ class RideDetailDialogFragment : DialogFragment() {
         exitBtn.setOnClickListener {
             dismiss()
         }
+
+        val usernameTV : TextView = rootView.findViewById(R.id.username_tv)
+        val destinationTV : TextView = rootView.findViewById(R.id.destination_tv)
+        val leavingTV : TextView = rootView.findViewById(R.id.leaving_tv)
+        val priceTV : TextView = rootView.findViewById(R.id.price_tv)
+        val contactTV : TextView = rootView.findViewById(R.id.contact_tv)
+        val descriptionTV : TextView = rootView.findViewById(R.id.description_tv)
+
+        usernameTV.text = ride.driver.name
+        destinationTV.text = ride.destination
+        leavingTV.text = "Leaving: " + ride.time
+        priceTV.text = "Fare: " + ride.payment
+        contactTV.text = "Contact: " + ride.driver.phone_number
+        descriptionTV.text = "Description: " + ride.additional_info
 
         return rootView
     }
@@ -45,5 +60,4 @@ class RideDetailDialogFragment : DialogFragment() {
         params.height = percentHeight.toInt()
         window.attributes = params
     }
-
 }

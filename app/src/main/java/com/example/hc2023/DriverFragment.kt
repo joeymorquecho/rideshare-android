@@ -19,26 +19,22 @@ class DriverFragment : Fragment() {
     // TEST-ONLY
     //TODO: integrate w/ backend
     private var dummyData = listOf<RideModel>(
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
-        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
-        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20"),
+//        RideModel("Apr 1 • 5pm", "Joey", "ITH Airport", "$10"),
+//        RideModel("Apr 10 • 7am", "Bob", "Syracuse Airport", "$20")
     )
 
-    private var networkTestData = listOf<PostModel>()
+    private var networkDataSet = listOf<RideModel>()
 
     private lateinit var driverRideAdapter: DriverRideAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
     }
 
     override fun onCreateView(
@@ -50,10 +46,10 @@ class DriverFragment : Fragment() {
 
         // Network request to get rides
         activity?.let {
-            getPosts(it) { posts ->
+            getPastRides(it) { rides ->
                 //TODO: integrate w/ backend
-                networkTestData = posts
-                driverRideAdapter.dataSet = networkTestData
+                networkDataSet = rides
+                driverRideAdapter.dataSet = networkDataSet
                 driverRideAdapter.notifyDataSetChanged()
             }
         }
@@ -62,7 +58,7 @@ class DriverFragment : Fragment() {
         val recyclerView: RecyclerView = rootView.findViewById(R.id.rides_list)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        driverRideAdapter = DriverRideAdapter(networkTestData)
+        driverRideAdapter = DriverRideAdapter(networkDataSet)
         recyclerView.adapter = driverRideAdapter
 
         return rootView
